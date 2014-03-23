@@ -1,0 +1,22 @@
+﻿ <?xml version="1.0" encoding="UTF-8" ?>
+    <widget xmlns = "http://www.w3.org/ns/widgets"
+
+        xmlns:gap   = "http://phonegap.com/ns/1.0"
+        id          = "com.phonegap.example"
+        version     = "1.0.0"
+        versionCode = "10" >
+
+        <!-- versionCode is optional and Android only -->
+
+      
+        <name>The Referral Network</name>
+
+        <description>
+        An App for boosting and manaing business referrals. 
+        </description>
+
+        <author href="http://yoursite.com" email="you@youremail.com">
+        Ikageng Masie
+        </author>
+   <gap:plugin name="com.phonegap.plugins.emailcomposer" />
+    </widget>

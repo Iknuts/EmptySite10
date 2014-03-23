@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+
+<html lang="en">
+     <head>
+        <meta charset="utf-8" />
+        <title>Control Panel</title>
+ <link rel="stylesheet" href="../css/font-awesome.min.css" />
+          <link rel="stylesheet" href="../css/jquerymobile.css" />
+        <link rel="stylesheet" href="../css/jquerymobile.nativedroid.css" />
+         <link rel="stylesheet" href="../css/Main.css" />
+          <link rel="stylesheet" href="../css/alertify.bootstrap.css" />
+          <link rel="stylesheet" href="../css/alertify.core.css" />
+         	   <link rel="stylesheet" href="../css/progress.css" />
+     
+		 
+		 
+        <link rel="stylesheet" href="../css/jquerymobile.nativedroid.light.css"   />
+        <link rel="stylesheet" href="../css/jquerymobile.nativedroid.color.green.css"   />
+		 
+        	<script src="../js/jquery-1.9.1.min.js"></script>
+   
+        <script src="../js/jquery.mobile-1.3.1.min.js"></script>           <script src="../js/crudfunctions.js"></script>
+    </head>
+    <body>
+        <div data-role="page" class="bg" id="cpanel" data-theme="b">
+    <div data-role="panel" id="menu" data-position-to="window">
+             <ul data-role="listview" data-inset="true" data-dividertheme="b">
+             <li data-role="list-divider">
+             Main Menu
+             </li>
+               <li data-icon="user"><a onclick="showProfile()">My Account</a></li>
+                <li data-icon="bar-chart"><a>Stats</a></li>
+              <li data-icon="money"><a>Payments & Earnings</a></li>
+              <li data-role="list-divider">Sync</li>
+              <li data-icon="refresh"> <a>Sync to Database</a>
+              <p id="lastDbUpdate"></p>
+              </li>
+             </ul>
+             
+          </div>
+      <div id="profile" data-role="popup" data-close-btn="right" data-ajax="true" data-corners="true">
+         <div data-role="header" data-theme="b"><h1>Profile</h1></div>
+             <div data-role="content" data-corners="true">
+                 <div class="profile">
+                 <img src="../images/warning.png" alt="none">
+                 </div>
+                 <div class="profiledata">
+                     <strong id="bizname">Trading As: Encompass ICT Solutions</strong>
+             <span id="myemail">Email Address: Ikageng Masie</span><br>
+                 <span id="mydateregistered">Date Registered: 01/23/2024</span><br>
+                     </div>
+                  <div class="desc">
+             <span id="mydesc">Description: Ikageng Masie saoidl aska sadn askcas k c akjas sadasd jas c asc m askdasnasdlasdasdasd , asjdnasd asdkla asodsad</span>
+                 
+                     </div>
+             </div>
+             <div data-role="footer" style="text-align: center" data-tap-toggle="false">
+                 <div class=" wrapper" >
+                     <div class="smlbtn" id="btnModify">
+                   
+                 <a data-role="button" id="msgOk" data-rel="back" onclick="closeMsg()"  data-icon="edit"  data-iconpos="top">Modify</a>
+                
+                      </div>
+                      <div class="smlbtn" id="btnCloseProfile">
+                   
+                 <a data-role="button" id="msgOk" data-rel="back" onclick="closeMsg()"  data-icon="check"  data-iconpos="top">OK</a>
+                
+                      </div>
+                  
+                     </div> 
+
+             </div>
+         </div>
+   
+            <div data-role="content"   >
+              
+                <section id="1" class="window">
+                         <div data-role="header" data-position="fixed" data-theme="b" data-inset="true">
+         <a href="#menu" data-role="button" ><i class='icon-ellipsis-vertical'></i></a> 
+  <h1>CONTROL PANEL</h1>
+        </div>
+                    <div class="content"> 
+                         <br><br><br>
+           <div class="ui-grid-a" style="margin: 0 auto; height: 100%">
+           <div class="ui-block-a" style="height: 20%">
+               <div class="panelbutton"><a data-transition="pop" href="#" onclick="showEdit()"><img src="../images/cabinet.png" alt="none">Profile Config</a></div>
+           </div>
+           <div class="ui-block-b" style="height: 20%">
+                <div class="panelbutton"><a href="incentives.html" data-transition="pop" data-dom-cache="true" ><img src="../images/tag.png" alt="none">Incentives </a></div>
+          
+           </div>
+
+            <div class="ui-block-a" style="height: 20%">
+                 <div class="panelbutton"><a href="#autoconfig" data-transition="pop" data-dom-cache="true"><img src="../images/lock.png" alt="none">Auto Config. </a></div>
+          
+            </div>
+            <div class="ui-block-b" style="height: 20%">
+               <div class="panelbutton"><a><img src="../images/globe.png" alt="none">My Network </a></div>
+          
+            </div>
+               <div class="ui-block-a" style="height: 20%">
+                   <div class="panelbutton"><a href="#earnings" data-transition="pop" data-dom-cache="true"><img src="../images/dollar-solid.png" alt="none">Earnings</a></div>
+          
+           </div>
+           <div class="ui-block-b" style="height: 20%">
+               <div class="panelbutton"><a><img src="../images/calculator.png" alt="none">Payments </a></div>
+          
+           </div>
+           <div class="ui-block-a" style="height: 20%">
+                   <div class="panelbutton"><a><img src="../images/home.png" alt="none">Business details</a></div>
+          
+           </div>
+           <div class="ui-block-b" style="height: 20%">
+               <div class="panelbutton"><a><img src="../images/power.png" alt="none">Logout </a></div>
+          
+           </div>
+           </div>
+                </div>    
+                </section>
+          
+            
+              
+            </div>
+        </div>
+        <div data-role="page" id="earnings" data-theme="b">
+        
+            <section id="2" class="window">
+                    <div class="content">
+                    <div data-role="header" data-theme="b">
+         <a data-rel="back" data-transition="pop"><i class="icon-double-angle-left"></i></a>
+  <h1>EARNINGS</h1>
+                                <a  data-role="button" ><i class='icon-refresh'></i></a> 
+ 
+        </div>
+                       
+                   <div data-role="content" data-inset="true">
+       <table data-role="table" id="earningstable" data-mode="column" class="ui-responsive table-stroke">
+              <thead>
+                <tr>
+                  <th data-priority="2"></th>
+                  <th></th>
+                  <th data-priority="1"><abbr title="Item Amount">Currently</abbr></th>
+                 
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th><i class="icon-money"></i></th>
+                  <td><a>TOTAL EARNINGS</a></td>
+                  <td><span id="lblTotalEarnings">$2043.44</span></td>
+                </tr>
+          <tr>
+                  <th><i class="icon-users"></i></th>
+                  <td><a>TOTAL AGENTS</a></td>
+                  <td><span id="lblTotalAgents">12</span></td>
+                </tr>
+                <tr>
+                  <th><i class="icon-bullhorn"></i></th>
+                  <td><a>TOTAL REFERRALS</a></td>
+                  <td><span id="lblTotalReferrals">16</span></td>
+                </tr>
+                <tr>
+                  <th><i class="icon-frown"></i></th>
+                  <td><a>UNPAID AGENTS</a></td>
+                  <td><span id="lblUnpaidAgents">4</span></td>
+                </tr>
+              </tbody>
+            </table>
+         </div>
+                        <ul data-role="listview" data-inset="true">
+                        <li data-role="list-divider">REFERRALS</li>
+                            <li data-icon="camera-retro">
+                            <a><span>Scan QR Code</span></a>
+                            </li>
+                              <li data-icon="keyboard">
+                            <a><span>Manually Enter Code</span></a>
+                            </li>
+                              <li data-icon="money">
+                            <a><span>View All Referrals</span></a>
+                            </li>
+                        </ul>
+                   </div>
+                </section>
+        </div>
+
+        <div data-role="page" id="autoconfig" data-theme="b">
+             <section id="3" class="window">
+                    <br>
+                    <h1>Auto Config.</h1>
+                    
+                         <fieldset>
+                             
+                          <ul data-role="listview" data-inset="true">
+                              <li data-role="list-divider">AUTO ACCEPT WORK REQUESTS</li>
+                          <li class="ui-li-list">
+                               
+                              <div class="listinfo">
+                              <p >If you want to accept all incoming request from agents looking to refer you, please switch on...</p>
+                     </div>
+                                       <div class="ui-li-count">
+                          <select id="autorequest" data-role="slider">
+                          <option value="off">Off</option>
+                           <option value="on">On</option>
+
+                          </select>
+                          </div>
+                                 
+                          </li>
+                               <li data-role="list-divider">AUTO ACCEPT AGENT REFERRALS</li>
+                          <li>
+                               
+                              <div class="listinfo">
+                              <p >If you want trust your agent to refer reasonable jobs, we suggest enabling Auto-Accept</p>
+                     </div>
+                                       <div class="ui-li-count">
+                          <select id="autorequest" data-role="slider">
+                          <option value="off">Off</option>
+                           <option value="on">On</option>
+
+                          </select>
+                          </div>
+                                 
+                          </li>
+                              
+                          </ul>
+                              <a data-role="button" data-ajax="true"  data-icon="ok-circle" data-iconpos="top">Save</a>
+                              </fieldset>
+                
+                </section>
+        </div>
+      
+         <script src="../js/alertify.min.js"></script>
+       
+       <script src="../js/pace.min.js"></script>
+     
+        <script>
+             function showProfile() {
+                $('#profile').popup('open');
+            }
+             function showEdit() {
+                    window.location = 'profileedit.html';
+                }
+            $(document).on("pageinit", "#cpanel", function () {
+               
+               
+            });
+
+         </script>
+    </body>
+</html>

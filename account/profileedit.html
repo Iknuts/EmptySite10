@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+        <meta charset="utf-8" />
+        <title>Profile Config.</title>
+         <link rel="stylesheet" href="../css/font-awesome.min.css" />
+          <link rel="stylesheet" href="../css/jquerymobile.css" />
+        <link rel="stylesheet" href="../css/jquerymobile.nativedroid.css" />
+         <link rel="stylesheet" href="../css/Main.css" />
+                <link rel="stylesheet" href="../css/main.css" />
+           <link rel="stylesheet" href="../css/alertify.default.css" />	 
+       
+          <link rel="stylesheet" href="../css/alertify.core.css" />
+         
+		 
+		 
+        <link rel="stylesheet" href="../css/jquerymobile.nativedroid.light.css"   />
+        <link rel="stylesheet" href="../css/jquerymobile.nativedroid.color.green.css"   />
+		   <link rel="stylesheet" href="../css/progress.css" />
+         
+      	
+		<script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+        	<script src="../js/jquery-1.9.1.min.js"></script>
+    	<script src="../js/gmaps.js"></script>
+    <style>
+  #googlemap {
+        height: 300px;
+        margin: 0px auto;
+        padding: 0px;
+        border-radius: 10px;
+        width:  95%;
+      }
+    </style>
+        <script src="../js/jquery.mobile-1.3.1.min.js"></script>
+    </head>
+    <body>
+        <div data-role="page" id="prof" data-theme="b">
+        <div data-role="header" data-position="static" data-theme="b">
+                         <a  data-rel="back" data-role="button" data-transition="pop" data-dom-cache="true" ><i class='icon-double-angle-left'></i></a> 
+  
+            <h1>Profile Config.</h1>
+         <a onclick="SaveData()"><i class="icon-save"></i></a>
+       
+        </div>
+            <div data-role="content">
+                <section id="1" class="window">
+                    <input type="hidden" value="122" id="hid">
+                    <ul data-role="listview" data-inset="true">
+                    <li data-role="list-divider">LOGO</li>
+                        <li data-role="fieldcontain">
+                            <div class="logowrapper">
+                            <label for="logo">Selected Image</label>
+                        <img id="logo" src="../images/noimage.png" width="128px"  alt="noimage">
+                                </div>
+                            <div class="uploadwrapper">
+                            <input id="fileupload"  onchange="readURL(this)"   accept="*/images"  type="file"><a style=" float: right" data-icon="delete" onclick="clearImage()" data-role="button" data-iconpos="notext">Clear</a><br>
+                       <a style="color: #000"><i class="icon-exclamation-sign"></i> &nbsp;&nbsp; Images must be less than 1Mb</a>
+                                 </div>
+                        </li>
+                        <li data-role="list-divider">DISPLAY NAME</li>
+                        <li>
+                        <input type="text" placeholder="Enter a business name" data-clear-btn="true" id="displayname">
+                        </li>
+                        <li data-role="list-divider">SLOGAN</li>
+                        <li data-icon="bullhorn">
+                        <input type="text" placeholder="Enter a business slogan/motto" data-clear-btn="true"  id="slogan">
+                        </li>
+                        <li data-role="list-divider">DESCRIPTION</li>
+                        <li data-icon="bullhorn">
+                        <input type="text" >
+                        <textarea placeholder="Descibe yourself in less than 100 words..." data-clear-btn="true"  id="desc" ></textarea>
+                        </li>
+                        <li data-role="list-divider">*FACEBOOK URL</li>
+                        <li data-icon="facebook">
+                        <input type="url" placeholder="Enter your facebook address (recommended)" id="facebookurl">
+                        </li>
+                    </ul>
+                </section>
+                 <section id="2" class="window">
+                     <div data-role="header" data-inset="true">
+                     <a></a>
+                         <h1>Payment Profile</h1>
+                         <ul data-role="listview" data-inset="true">
+                         <li data-role="list-divider">  PAYPAL ID</li>      
+                        <li>
+                        <input type="text" placeholder="Enter your Paypal ID" data-clear-btn="true"  id="paypalid">
+                      </li>
+                                 <li data-role="list-divider">OPERATING CURRENCY</li>      
+                        <li>
+                            <select id="from" ></select>
+                      </li>
+                         </ul>
+                     </div>
+                 </section>
+                 <section id="3">
+                 </section>
+                <input type="hidden" id="logobytes">
+            </div>
+            <div data-role="footer" data-tap-toggle="false" data-theme="b" data-position="fixed">
+          <div data-role="navbar">
+              <ul>
+              <li> 
+                   <a href="#prof" data-role="button" data-transition="pop" data-icon="user" data-iconpos="top">Profile</a>
+        </li>
+              <li> 
+                   <a href="#addresses" data-role="button" data-transition="pop" data-icon="home" data-iconpos="top">Address/Location</a>
+        </li>
+              </ul>
+          </div>
+            </div>
+        </div>
+          <div data-role="page" id="addresses" data-theme="b">
+        <div data-role="header" data-position="static" data-theme="b">
+                 <a  data-rel="back" data-role="button" data-transition="pop" data-dom-cache="true" ><i class='icon-double-angle-left'></i></a> 
+     
+            <h1>Locations</h1>
+             <a onclick="SaveAddress()"><i class="icon-save"></i></a>
+       
+        </div>
+            <div data-role="content">
+                
+     <label for="swtchgoogle">Use Google maps?</label>
+   
+                   <select id="swtchgoogle" onchange="toggleGoogle()" data-role="slider">
+                          <option value="off">Off</option>
+                           <option value="on">On</option>
+
+                          </select>
+            
+                <section id="manual" >
+                    <input type="hidden" value="122" id="hid">
+                    <ul data-role="listview" data-inset="true">
+                    
+                        <li data-role="list-divider">STREET NAME</li>
+                        <li>
+                        <input type="text" placeholder="Enter a Street name..." data-clear-btn="true" id="streetname">
+                        </li>
+                        <li data-role="list-divider">CITY</li>
+                        <li  >
+                        <input type="text" placeholder="Enter the city you're in..." data-clear-btn="true"  id="city">
+                        </li>
+                        <li data-role="list-divider">COUNTRY</li>
+                        <li >
+                        <input type="url" placeholder="Enter your country of incorporation..." id="country">
+                        </li>
+                    </ul>
+                </section>
+        <section id="google">
+        <h2>Google Location</h2>
+            <div id="googlemap"></div>
+      
+        </section>
+            </div>
+                <div data-role="footer" data-tap-toggle="false" data-theme="b" data-position="fixed">
+          <div data-role="navbar">
+             <ul>
+             <li>  <a href="#prof" data-role="button" data-transition="pop" data-icon="user" data-iconpos="top">Profile</a>
+        </li>
+                 <li>  <a href="#addresses" data-role="button" data-transition="pop" data-icon="home" data-iconpos="top">Address/Location</a>
+         </li>
+             </ul>
+         </div>
+            </div>   
+        </div>
+
+          <script src="../js/alertify.min.js"></script>
+          <script src="../js/jquery.windows.js"></script>
+         <script src="../js/crudfunctions.js"></script>
+   
+    
+        <script src="../js/convertor.js"></script>
+      
+           <script src="../js/jquery.iframe-transport.js"></script>
+          <script src="../js/pace.min.js"></script>
+      <script>
+          var geocoder;
+          var map;
+          var marker;
+          var markercontent;
+
+
+          function locate() {
+              if (navigator.geolocation) {
+                  navigator.geolocation.getCurrentPosition(showPosition);
+              }
+              else { alertify.alert("Geolocation is not supported by this browser."); }
+          }
+    </script>
+        <script>
+            var lat, lng;
+            function SaveData() {
+                try {
+                    //var g = localStorage.getItem("accounId");
+                    g = localStorage.getItem("account");
+                    if (g != null) {
+                        jQuery.support.cors = true;
+                        var img = $('#logobytes').val();
+                        var disp = $('#displayname').val();
+                        var slg = $('#slogan').val();
+                        var pp = $('#paypalid').val();
+                        var fb = $('#facebookurl').val();
+                        var data = { Avatar: img, EmailAddress: g, FacebookUrl: fb, PaypalId: pp, DisplayName: disp, Slogan: slg };
+
+                        $.ajax({
+                            url: apiUrl + 'Businesses/' + g + "/",
+                            type: 'PUT',
+                            data: JSON.stringify(data),
+                            contentType: "application/json;charset=utf-8",
+                            success: function () {
+                                alertify.alert("You have successfully update your profile... \r\n please make sure ALL other Configurations are to your liking");
+
+
+
+
+                            },
+                            error: function (x, y, z) {
+                                alert(x.responseText + '\n' + y + '\n' + z);
+                            }
+                        });
+                    }
+                }
+                catch (err) {
+                    alert(err);
+                }
+            }
+            function SaveAddress() {
+                var st = $('#streetname').val();
+                var ct = $('#city').val();
+                var ctr = $('#country').val();
+                UpdateLocalAddress(st, ct, ctr);
+
+            }
+
+            var lat, lng = 0;
+
+            $(document).on("pageinit", "#prof", function () {
+                UpdateExRates();
+                $('#google').hide("fast");
+                var $windows = $('.window');
+                $windows.windows({
+                    snapping: false,
+                    snapSpeed: 300,
+                    snapInterval: 1000,
+                    onScroll: function (s) {
+
+                    }
+
+                                                                                                     ,
+                    onSnapComplete: function ($el) {
+                        var win = $($el).attr("id");
+
+
+                    },
+                    onWindowEnter: function ($el) {
+
+                    }
+                });
+
+            });
+            $(document).on("pageinit", "#addresses", function () {
+
+                $('#google').hide("fast");
+
+            });
+
+
+            function initmap() {
+                map = new GMaps({
+                    div: '#googlemap',
+                    zoom: 16,
+                    lat: -12.043333,
+                    lng: -77.028333,
+                    click: function (e) {
+                     
+                    },
+                    dragend: function (e) {
+                    }
+
+                });
+
+                GMaps.geolocate({
+                    success: function (position) {
+                        map.setCenter(position.coords.latitude, position.coords.longitude);
+                        map.addMarker({
+                            lat: position.coords.latitude,
+                            lng: position.coords.longitude,
+                            draggable: true,
+                            title: 'My Location',
+                            infoWindow: { content: markercontent },
+                            dragend: function (e) {
+                                latlng = this.getPosition();
+                                lat = latlng.lat();
+                                lng = latlng.lng();
+                                
+                            }
+                        });
+                        //   map.addmarker(position.coords.latitude, position.coords.longitude);
+                    },
+                    error: function (error) {
+                        alertify.log('Geolocation failed: ' + error.message);
+                    },
+                    not_supported: function () {
+                        alertify.alert("Your browser does not support geolocation");
+                    },
+                    always: function () {
+                        alertify.log("Done!");
+                    }
+                });
+
+
+            }
+            function codeLatLng(lat,lng) {
+                 geocoder = new google.maps.Geocoder();
+                  var latlng = new google.maps.LatLng(lat, lng);
+                geocoder.geocode({ 'latLng': latlng }, function (results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        if (results[1]) {
+                            // map.setZoom(11);
+                            // marker = new google.maps.Marker({
+                            //      position: latlng,
+                            //    map: map
+                            //  });
+                      markercontent= '<div class="message info"> <i class="icon-user"></i></div>' + "Where to find me \r\n"+ results[1].formatted_address;
+                            //  infowindow.setContent(results[1].formatted_address);
+                            //   infowindow.open(map, marker);
+                        } else {
+                            alert('No results found');
+                        }
+                    } else {
+                        alert('Geocoder failed due to: ' + status);
+                    }
+                });
+            }
+            function toggleGoogle() {
+                $('#manual').slideToggle("slow");
+                $('#google').slideToggle("slow");
+                initmap();
+            }
+
+        </script>
+     
+    </body>
+</html>
